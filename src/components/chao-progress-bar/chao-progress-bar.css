@@ -1,0 +1,54 @@
+:host {
+  display: block;
+  --progress-bar-size: 0.7em;
+  --progress: 0%;
+  --progress-bar-background: #C4C4C4;
+  --background-color1: rgba(0, 104, 225, 1);
+  --background-color2: rgba(61, 92, 254, 1);
+  --background-color3: rgba(207, 0, 225, 1);
+  --border-radius: calc(var(--progress-bar-size) / 2);
+  --transition-duration: 800ms;
+  transition: all var(--transition-duration)
+}
+
+#progress-bar {
+  position: relative;
+  width: 100%;
+  height: var(--progress-bar-size);
+  background: var(--progress-bar-background);
+  border-radius: var(--border-radius);
+}
+
+#progress {
+  position: absolute;
+  right: 0;
+  width: calc(100% - var(--progress));
+  height: 100%;
+  background: linear-gradient(90deg, var(--background-color1) 0%, var(--background-color2) 50%, var(--background-color3) 100%);
+  ;
+  border-radius: var(--border-radius);
+  animation: progressbar-countdown var(--transition-duration) infinite;
+}
+
+
+@keyframes progressbar-countdown {
+  0% {
+    background: linear-gradient(90deg, var(--background-color3) 0%, var(--background-color2) 0%, var(--background-color1) 25%);
+  }
+
+  25% {
+    background: linear-gradient(90deg, var(--background-color3) 0%, var(--background-color2) 25%, var(--background-color1) 50%);
+  }
+
+  50% {
+    background: linear-gradient(90deg, var(--background-color2) 0%, var(--background-color3) 50%, var(--background-color1) 75%);
+  }
+
+  75% {
+    background: linear-gradient(90deg, var(--background-color1) 0%, var(--background-color2) 75%, var(--background-color3) 100%);
+  }
+
+  100% {
+    background: linear-gradient(90deg, var(--background-color1) 0%, var(--background-color2) 100%, var(--background-color3) 0%);
+  }
+}
